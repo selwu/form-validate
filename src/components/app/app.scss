@@ -1,6 +1,8 @@
 .app {
   margin: auto;
   display: flex;
+  max-width: 400px;
+  min-width: 360px;
   flex-direction: column;
   justify-content: center;
   align-items: center;

@@ -5,6 +5,7 @@ const Checkbox = () => {
   return (
     <label className="checkbox">
       <input className="checkbox__item" type="checkbox" />
+      <span className="checkbox__new"></span>
     </label>
   );
 };

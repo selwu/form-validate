@@ -1,5 +1,8 @@
 .checkbox {
   position: relative;
+  width: 28px;
+  height: 28px;
+  display: block;
   &__item {
     position: absolute;
     appearance: none;

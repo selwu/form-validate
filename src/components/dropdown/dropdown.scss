@@ -7,7 +7,7 @@
     background: #ffffff;
     position: absolute;
     box-sizing: border-box;
-    box-shadow: 0 4px 8px rgba(44, 39, 56, 0.04), 0px 20px 20px rgba(44, 39, 56, 0.04);
+    box-shadow: 0 4px 8px rgba(44, 39, 56, 0.04), 0 20px 20px rgba(44, 39, 56, 0.04);
     border-radius: 6px;
     margin: 0;
     display: flex;
@@ -21,6 +21,9 @@
     overflow: hidden;
     order: 1;
     z-index: 1;
+    &.active + .dropdown__selected:after {
+      right: 10px;
+    }
   }
   &__label {
     font-style: normal;
@@ -87,8 +90,6 @@
   border: 1px solid #dbe2ea;
   & + .dropdown__selected {
     border: 2px solid #0880ae;
-    box-shadow: 0 4px 8px rgba(44, 39, 56, 0.04);
-    border-radius: 6px;
     padding: 14px;
   }
 }

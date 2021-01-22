@@ -6,7 +6,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   padding-bottom: 18px;
-  padding-top: 8px;
+  margin-bottom: 8px;
   &__label {
     width: 100%;
     display: flex;
@@ -17,13 +17,13 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 21px;
-    color: #756F86;
+    color: #756f86;
     text-transform: capitalize;
   }
   &__item {
     width: 100%;
-    background: #FFFFFF;
-    border: 1px solid #DBE2EA;
+    background: #ffffff;
+    border: 1px solid #dbe2ea;
     box-sizing: border-box;
     box-shadow: 0 4px 8px rgba(44, 39, 56, 0.04);
     border-radius: 6px;
@@ -34,7 +34,7 @@
     font-weight: normal;
     font-size: 16px;
     line-height: 21px;
-    color: #2C2738;
+    color: #2c2738;
     &::placeholder {
       text-transform: capitalize;
       font-family: inherit;
@@ -42,10 +42,10 @@
       font-weight: normal;
       font-size: 16px;
       line-height: 21px;
-      color: #7C9CBF;
+      color: #7c9cbf;
     }
     &:focus {
-      border: 2px solid #0880AE;
+      border: 2px solid #0880ae;
       margin: 5px -1px;
       outline: none;
     }
@@ -58,6 +58,6 @@
     font-weight: normal;
     font-size: 14px;
     line-height: 18px;
-    color: #FF7171;
+    color: #ff7171;
   }
 }

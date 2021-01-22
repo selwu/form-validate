@@ -1,12 +1,12 @@
 import './app.scss';
 import Input from '../input/input';
-import Drobdown from '../drobdown-checkbox/drobdown';
+import Dropdown from '../dropdown/dropdown';
 
 function App() {
   return (
     <div className="app">
       <Input name="Label" placeholder="placeholder" errorMsg="Validation error message" />
-      <Drobdown />
+      <Dropdown />
     </div>
   );
 }

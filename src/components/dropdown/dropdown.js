@@ -15,8 +15,6 @@ const Dropdown = () => {
   };
   return (
     <div className="dropdown">
-      <h2 className="dropdown__title">Язык</h2>
-
       <div className={isActive ? 'dropdown__container active' : 'dropdown__container'}>
         <label className="dropdown__label">
           <input
@@ -63,9 +61,11 @@ const Dropdown = () => {
           Испаниский
         </label>
       </div>
-      <div onClick={dropdownHandler} className="dropdown__selected">
+      <div className="dropdown__selected-label">
         Язык
+        <input placeholder="Язык" className="dropdown__selected" />
       </div>
+      <div onClick={dropdownHandler} className="dropdown__selected-mask"></div>
     </div>
   );
 };

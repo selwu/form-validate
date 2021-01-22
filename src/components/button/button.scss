@@ -1,5 +1,5 @@
 .button {
-  background: #0880AE;
+  background: #0880ae;
   box-shadow: 0 2px 4px rgba(44, 39, 56, 0.08), 0 4px 8px rgba(44, 39, 56, 0.08);
   border-radius: 6px;
   border: none;
@@ -10,7 +10,9 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 21px;
-  color: #EBF4F8;
+  color: #ebf4f8;
+  text-transform: capitalize;
+  width: 100%;
   &:hover {
     box-shadow: 0 12px 24px rgba(44, 39, 56, 0.08), 0 24px 48px rgba(44, 39, 56, 0.16);
   }

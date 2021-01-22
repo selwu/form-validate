@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './form.scss';
 import Input from '../input/input';
 import Dropdown from '../dropdown/dropdown';
@@ -9,17 +10,20 @@ const Form = () => {
     <>
       <form action="">
         <div>
-          <h2></h2>
-          <p></p>
+          <h2>Регистрация</h2>
+          <p>
+            Уже есть аккаунт?
+            <Link>Войти</Link>
+          </p>
           <Input />
           <Input />
           <Input />
           <Dropdown />
           <label>
+            <Checkbox />
             Принимаю
             <a target="_blank">условия</a>
             использования
-            <Checkbox />
           </label>
         </div>
       </form>

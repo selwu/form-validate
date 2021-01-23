@@ -57,14 +57,20 @@
     line-height: 21px;
     color: #2c2738;
     order: 0;
+
     &-mask {
       position: absolute;
-      top: 25px;
+      top: 27px;
       right: 0;
       left: 0;
-      bottom: 0;
+      bottom: 4px;
       background-color: transparent;
       cursor: pointer;
+      &:focus {
+        border: 2px solid #0880ae;
+        outline: none;
+        border-radius: 6px;
+      }
     }
     &-label {
       position: relative;
@@ -101,5 +107,8 @@
   & + .dropdown__selected-label .dropdown__selected {
     border: 2px solid #0880ae;
     padding: 14px;
+  }
+  & + .dropdown__selected-label .dropdown__selected::placeholder {
+    color: #2c2738;
   }
 }

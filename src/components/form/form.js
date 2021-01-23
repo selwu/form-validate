@@ -7,9 +7,17 @@ import Checkbox from '../checkbox/checkbox';
 import Button from '../button/button';
 
 const Form = () => {
+  const onLanguageHandler = (lang) => {
+    console.log(lang);
+  };
+
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <>
-      <form action="" className="form">
+      <form onSubmit={onSubmitHandler} className="form">
         <h2 className="form__title">Регистрация</h2>
         <p className="form__text">
           Уже есть аккаунт?&nbsp;&nbsp;
@@ -20,7 +28,7 @@ const Form = () => {
         <Input name="Имя" placeholder="Введите Ваше имя" />
         <Input name="Еmail" placeholder="Введите ваш email" />
         <Input name="Номер телефона" placeholder="Введите номер телефона" />
-        <Dropdown />
+        <Dropdown onLanguage={onLanguageHandler} />
         <label className="form__checkbox">
           <Checkbox />
           <span className="form__contract">

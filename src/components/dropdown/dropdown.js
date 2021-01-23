@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './dropdown.scss';
 
-const Dropdown = () => {
+const Dropdown = ({ onLanguage }) => {
   const [isActive, setIsActive] = useState(false);
   const [language, setLanguage] = useState('');
 
@@ -10,8 +10,30 @@ const Dropdown = () => {
   };
 
   const inputHandler = (e) => {
-    console.log(e.target.value);
-    setLanguage(e.target.value);
+    const languageValue = e.target.value;
+    setLanguage(() => languageValue);
+    switch (languageValue) {
+      case 'Русский': {
+        onLanguage('ru');
+        break;
+      }
+      case 'Английский': {
+        onLanguage('en');
+        break;
+      }
+      case 'Китайский': {
+        onLanguage('ch');
+        break;
+      }
+      case 'Испаниский': {
+        onLanguage('es');
+        break;
+      }
+      default: {
+        return;
+      }
+    }
+    setIsActive(!isActive);
   };
   return (
     <div className="dropdown">
@@ -19,8 +41,8 @@ const Dropdown = () => {
         <label className="dropdown__label">
           <input
             onChange={inputHandler}
-            checked={inputHandler}
-            value={'ru'}
+            checked={language === 'Русский'}
+            defaultValue={'Русский'}
             name="category"
             className="dropdown__radio"
             type="radio"
@@ -30,8 +52,8 @@ const Dropdown = () => {
         <label className="dropdown__label">
           <input
             onChange={inputHandler}
-            checked={inputHandler}
-            value={'en'}
+            checked={language === 'Английский'}
+            defaultValue={'Английский'}
             name="category"
             className="dropdown__radio"
             type="radio"
@@ -41,8 +63,8 @@ const Dropdown = () => {
         <label className="dropdown__label">
           <input
             onChange={inputHandler}
-            checked={inputHandler}
-            value={'ch'}
+            checked={language === 'Китайский'}
+            defaultValue={'Китайский'}
             name="category"
             className="dropdown__radio"
             type="radio"
@@ -52,8 +74,8 @@ const Dropdown = () => {
         <label className="dropdown__label">
           <input
             onChange={inputHandler}
-            checked={inputHandler}
-            value={'is'}
+            checked={language === 'Испаниский'}
+            defaultValue={'Испаниский'}
             name="category"
             className="dropdown__radio"
             type="radio"
@@ -63,9 +85,15 @@ const Dropdown = () => {
       </div>
       <div className="dropdown__selected-label">
         Язык
-        <input placeholder="Язык" className="dropdown__selected" />
+        <input
+          value={language}
+          onChange={() => ''}
+          placeholder="Язык"
+          className="dropdown__selected"
+          tabIndex="-1"
+        />
       </div>
-      <div onClick={dropdownHandler} className="dropdown__selected-mask"></div>
+      <div onClick={dropdownHandler} className="dropdown__selected-mask" tabIndex="0"></div>
     </div>
   );
 };

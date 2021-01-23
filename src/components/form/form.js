@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './form.scss';
 import Input from '../input/input';
 import Dropdown from '../dropdown/dropdown';
 import Checkbox from '../checkbox/checkbox';
 import Button from '../button/button';
+import './form.scss';
 
 const Form = () => {
   const [name, setName] = useState('');
@@ -14,6 +14,7 @@ const Form = () => {
   const [isContract, setIsContract] = useState(false);
 
   const onLanguageHandler = (lang) => {
+    setLanguage(lang);
     console.log(lang);
   };
 
@@ -28,7 +29,22 @@ const Form = () => {
     console.log(data);
   };
 
-  useEffect(() => {});
+  const nameHandler = (e) => {
+    const value = e.target.value;
+    setName(value);
+  };
+  const emailHandler = (e) => {
+    const value = e.target.value;
+    setEmail(value);
+  };
+  const telephoneHandler = (e) => {
+    const value = e.target.value;
+    setTelephone(value);
+  };
+
+  useEffect(() => {
+    console.log(isContract);
+  }, [isContract]);
 
   return (
     <>
@@ -40,9 +56,14 @@ const Form = () => {
             Войти
           </Link>
         </p>
-        <Input name="Имя" placeholder="Введите Ваше имя" />
-        <Input name="Еmail" placeholder="Введите ваш email" />
-        <Input name="Номер телефона" placeholder="Введите номер телефона" />
+        <Input value={name} onChange={nameHandler} name="Имя" placeholder="Введите Ваше имя" />
+        <Input value={email} onChange={emailHandler} name="Еmail" placeholder="Введите ваш email" />
+        <Input
+          value={telephone}
+          onChange={telephoneHandler}
+          name="Номер телефона"
+          placeholder="Введите номер телефона"
+        />
         <Dropdown onLanguage={onLanguageHandler} />
         <label className="form__checkbox">
           <Checkbox isCheckbox={() => setIsContract(!isContract)} />

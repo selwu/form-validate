@@ -22,8 +22,6 @@ const Form = () => {
   const [emailError, setEmailError] = useState('Поле не может быть пустым');
   const [telephoneError, setTelephoneError] = useState('Поле не может быть пустым');
 
-
-
   const onLanguageHandler = (lang) => {
     setLanguage(lang);
     console.log(lang);
@@ -40,17 +38,45 @@ const Form = () => {
     console.log(data);
   };
 
+  const blurHandler = (e) => {
+    switch (e.target.name) {
+      case 'name': {
+        setnameDirty(true);
+        break;
+      }
+      case 'email': {
+        setEmailDirty(true);
+        break;
+      }
+      case 'telephone': {
+        setTelephoneDirty(true);
+        break;
+      }
+    }
+  };
   const nameHandler = (e) => {
     const value = e.target.value;
     setName(value);
   };
   const emailHandler = (e) => {
     const value = e.target.value;
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     setEmail(value);
+    if (!re.test(String(value).toLowerCase())) {
+      setEmailError('Некорректный email');
+    } else {
+      setEmailError('');
+    }
   };
   const telephoneHandler = (e) => {
     const value = e.target.value;
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     setTelephone(value);
+    if (!re.test(String(value).toLowerCase())) {
+      setTelephone('Некорректный номер телефона');
+    } else {
+      setTelephone('');
+    }
   };
 
   useEffect(() => {
@@ -63,32 +89,35 @@ const Form = () => {
         <h2 className="form__title">Регистрация</h2>
         <p className="form__text">
           Уже есть аккаунт?&nbsp;&nbsp;
-          <Link to="/" className="form__title-link">
-            Войти
-          </Link>
+          <Link className="form__title-link">Войти</Link>
         </p>
         <Input
           valueDirty={nameDirty}
           errorMsg={nameError}
-          name='name'
-          value={name} 
-          onChange={nameHandler} title="Имя"
+          name="name"
+          value={name}
+          onChange={nameHandler}
+          onBlur={blurHandler}
+          title="Имя"
           placeholder="Введите Ваше имя"
-             />
+        />
         <Input
           valueDirty={emailDirty}
           errorMsg={emailError}
-          name='email'
+          name="email"
           value={email}
           onChange={emailHandler}
+          onBlur={blurHandler}
           title="Еmail"
-          placeholder="Введите ваш email" />
+          placeholder="Введите ваш email"
+        />
         <Input
           valueDirty={telephoneDirty}
           errorMsg={telephoneError}
-          name='telephone'
+          name="telephone"
           value={telephone}
           onChange={telephoneHandler}
+          onBlur={blurHandler}
           title="Номер телефона"
           placeholder="Введите номер телефона"
         />

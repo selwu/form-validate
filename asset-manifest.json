@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.1a1db099.chunk.css",
-    "main.js": "/static/js/main.4782c51a.chunk.js",
-    "main.js.map": "/static/js/main.4782c51a.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.87b0ae73.js",
-    "runtime-main.js.map": "/static/js/runtime-main.87b0ae73.js.map",
-    "static/js/2.c19416ef.chunk.js": "/static/js/2.c19416ef.chunk.js",
-    "static/js/2.c19416ef.chunk.js.map": "/static/js/2.c19416ef.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.1a1db099.chunk.css.map": "/static/css/main.1a1db099.chunk.css.map",
-    "static/js/2.c19416ef.chunk.js.LICENSE.txt": "/static/js/2.c19416ef.chunk.js.LICENSE.txt",
-    "static/media/index.scss": "/static/media/IBMPlexSans.a646e286.ttf"
+    "main.css": "/form-validate/static/css/main.d9f8e2eb.chunk.css",
+    "main.js": "/form-validate/static/js/main.4782c51a.chunk.js",
+    "main.js.map": "/form-validate/static/js/main.4782c51a.chunk.js.map",
+    "runtime-main.js": "/form-validate/static/js/runtime-main.37682c50.js",
+    "runtime-main.js.map": "/form-validate/static/js/runtime-main.37682c50.js.map",
+    "static/js/2.c19416ef.chunk.js": "/form-validate/static/js/2.c19416ef.chunk.js",
+    "static/js/2.c19416ef.chunk.js.map": "/form-validate/static/js/2.c19416ef.chunk.js.map",
+    "index.html": "/form-validate/index.html",
+    "static/css/main.d9f8e2eb.chunk.css.map": "/form-validate/static/css/main.d9f8e2eb.chunk.css.map",
+    "static/js/2.c19416ef.chunk.js.LICENSE.txt": "/form-validate/static/js/2.c19416ef.chunk.js.LICENSE.txt",
+    "static/media/index.scss": "/form-validate/static/media/IBMPlexSans.a646e286.ttf"
   },
   "entrypoints": [
-    "static/js/runtime-main.87b0ae73.js",
+    "static/js/runtime-main.37682c50.js",
     "static/js/2.c19416ef.chunk.js",
-    "static/css/main.1a1db099.chunk.css",
+    "static/css/main.d9f8e2eb.chunk.css",
     "static/js/main.4782c51a.chunk.js"
   ]
 }

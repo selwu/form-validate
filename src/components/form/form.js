@@ -21,6 +21,7 @@ const Form = () => {
   const [nameError, setNameError] = useState('Поле не может быть пустым');
   const [emailError, setEmailError] = useState('Поле не может быть пустым');
   const [telephoneError, setTelephoneError] = useState('Поле не может быть пустым');
+  const [formValid, setFormValid] = useState(false);
 
   const onLanguageHandler = (lang) => {
     setLanguage(lang);
@@ -57,6 +58,7 @@ const Form = () => {
   const nameHandler = (e) => {
     const value = e.target.value;
     setName(value);
+    setNameError('');
   };
   const emailHandler = (e) => {
     const value = e.target.value;
@@ -70,7 +72,7 @@ const Form = () => {
   };
   const telephoneHandler = (e) => {
     const value = e.target.value;
-    const re = /^(\+\d*)(9\d{9}|\(9\d\d\)\s?\d{3}-\d{2}-\d{2}|\s9\d{2}-\d{3}-\d{2}-\d{2})$/;
+    const re = /^\+?\d+\(?\d+\)?(\d)+(\s)?(\-)?\d+(\s)?/;
     setTelephone(value);
     if (!re.test(String(value).toLowerCase())) {
       setTelephoneError('Недопустимый формат номера');
@@ -80,8 +82,13 @@ const Form = () => {
   };
 
   useEffect(() => {
+    if (!isContract || nameError || emailError || telephoneError || !language) {
+      setFormValid(true);
+    } else {
+      setFormValid(false);
+    }
     console.log(isContract);
-  }, [isContract]);
+  }, [isContract, nameError, emailError, telephoneError, language]);
 
   return (
     <>
@@ -132,7 +139,7 @@ const Form = () => {
             &nbsp;использования
           </span>
         </label>
-        <Button name="Зарегистрироваться" />
+        <Button isDisabled={formValid} name="Зарегистрироваться" />
       </form>
     </>
   );

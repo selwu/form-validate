@@ -13,6 +13,17 @@ const Form = () => {
   const [language, setLanguage] = useState('');
   const [isContract, setIsContract] = useState(false);
 
+  const [nameDirty, setnameDirty] = useState(false);
+  const [emailDirty, setEmailDirty] = useState(false);
+  const [telephoneDirty, setTelephoneDirty] = useState(false);
+  const [languageDirty, setLanguageDirty] = useState(false);
+
+  const [nameError, setNameError] = useState('Поле не может быть пустым');
+  const [emailError, setEmailError] = useState('Поле не может быть пустым');
+  const [telephoneError, setTelephoneError] = useState('Поле не может быть пустым');
+
+
+
   const onLanguageHandler = (lang) => {
     setLanguage(lang);
     console.log(lang);
@@ -56,12 +67,29 @@ const Form = () => {
             Войти
           </Link>
         </p>
-        <Input value={name} onChange={nameHandler} name="Имя" placeholder="Введите Ваше имя" />
-        <Input value={email} onChange={emailHandler} name="Еmail" placeholder="Введите ваш email" />
         <Input
+          valueDirty={nameDirty}
+          errorMsg={nameError}
+          name='name'
+          value={name} 
+          onChange={nameHandler} title="Имя"
+          placeholder="Введите Ваше имя"
+             />
+        <Input
+          valueDirty={emailDirty}
+          errorMsg={emailError}
+          name='email'
+          value={email}
+          onChange={emailHandler}
+          title="Еmail"
+          placeholder="Введите ваш email" />
+        <Input
+          valueDirty={telephoneDirty}
+          errorMsg={telephoneError}
+          name='telephone'
           value={telephone}
           onChange={telephoneHandler}
-          name="Номер телефона"
+          title="Номер телефона"
           placeholder="Введите номер телефона"
         />
         <Dropdown onLanguage={onLanguageHandler} />

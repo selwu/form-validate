@@ -70,12 +70,12 @@ const Form = () => {
   };
   const telephoneHandler = (e) => {
     const value = e.target.value;
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re = /^(\+\d*)(9\d{9}|\(9\d\d\)\s?\d{3}-\d{2}-\d{2}|\s9\d{2}-\d{3}-\d{2}-\d{2})$/;
     setTelephone(value);
     if (!re.test(String(value).toLowerCase())) {
-      setTelephone('Некорректный номер телефона');
+      setTelephoneError('Недопустимый формат номера');
     } else {
-      setTelephone('');
+      setTelephoneError('');
     }
   };
 

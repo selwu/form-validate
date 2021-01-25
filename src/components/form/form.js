@@ -71,11 +71,11 @@ const Form = () => {
   };
   const telephoneHandler = (e) => {
     const value = e.target.value;
-    const re = /^\+?\d+\(?\d+\)?(\d)+(\-)?\d+(\-)?(\d+)/;
-    const resultLength = value.replace(/(\+)?(\()?(\)?)/g, '');
+    const re = /^\+?\d+\(?\d+\)?(\d)+\d+(\d+)/;
+    const resultLength = value.replace(/(\+)?(\()?(\)?(\-)?)/g, '');
     console.log('result: ', resultLength);
     setTelephone(value);
-    if (!re.test(String(value).toLowerCase())) {
+    if (resultLength.length !== 11 || !re.test(String(value).toLowerCase())) {
       setTelephoneError('Недопустимый формат номера');
     } else {
       setTelephoneError('');

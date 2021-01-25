@@ -24,7 +24,6 @@ const Form = () => {
 
   const onLanguageHandler = (lang) => {
     setLanguage(lang);
-    console.log(lang);
   };
 
   const onSubmitHandler = (e) => {
@@ -52,18 +51,26 @@ const Form = () => {
         setTelephoneDirty(true);
         break;
       }
+      default: {
+        return;
+      }
     }
   };
   const nameHandler = (e) => {
     const value = e.target.value;
+    const reg = /^[A-Za-zА-ЯЁа-яё -]+$/;
     setName(value);
-    setNameError('');
+    if (!reg.test(String(value).toLowerCase())) {
+      setNameError('Некорректное имя');
+    } else {
+      setNameError('');
+    }
   };
   const emailHandler = (e) => {
     const value = e.target.value;
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     setEmail(value);
-    if (!re.test(String(value).toLowerCase())) {
+    if (!reg.test(String(value).toLowerCase())) {
       setEmailError('Некорректный email');
     } else {
       setEmailError('');
@@ -71,12 +78,14 @@ const Form = () => {
   };
   const telephoneHandler = (e) => {
     const value = e.target.value;
-    const re = /^\+?\d+\(?\d+\)?(\d)+\d+(\d+)/;
+    const reg = /^\+?\d+\(?\d+\)?(\d)+\d+(\d+)/;
     const resultLength = value.replace(/(\+)?(\()?(\)?(\-)?)/g, '');
-    console.log('result: ', resultLength);
     setTelephone(value);
-    if (resultLength.length !== 11 || !re.test(String(value).toLowerCase())) {
+    if (resultLength.length !== 11 || !reg.test(String(value).toLowerCase())) {
       setTelephoneError('Недопустимый формат номера');
+      if (resultLength.length === 0) {
+        setTelephoneError('Поле не может быть пустым');
+      }
     } else {
       setTelephoneError('');
     }
@@ -88,7 +97,6 @@ const Form = () => {
     } else {
       setFormValid(false);
     }
-    console.log(isContract);
   }, [isContract, nameError, emailError, telephoneError, language]);
 
   return (

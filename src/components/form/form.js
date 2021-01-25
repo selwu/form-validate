@@ -62,6 +62,9 @@ const Form = () => {
     setName(value);
     if (!reg.test(String(value).toLowerCase())) {
       setNameError('Некорректное имя');
+      if (value.length === 0) {
+        setNameError('Поле не может быть пустым');
+      }
     } else {
       setNameError('');
     }
@@ -72,6 +75,9 @@ const Form = () => {
     setEmail(value);
     if (!reg.test(String(value).toLowerCase())) {
       setEmailError('Некорректный email');
+      if (value.length === 0) {
+        setEmailError('Поле не может быть пустым');
+      }
     } else {
       setEmailError('');
     }
@@ -100,62 +106,60 @@ const Form = () => {
   }, [isContract, nameError, emailError, telephoneError, language]);
 
   return (
-    <>
-      <form onSubmit={onSubmitHandler} className="form">
-        <h2 className="form__title">Регистрация</h2>
-        <p className="form__text">
-          Уже есть аккаунт?&nbsp;&nbsp;
-          <Link to="/form-validate/" className="form__title-link">
-            Войти
-          </Link>
-        </p>
-        <Input
-          valueDirty={nameDirty}
-          errorMsg={nameError}
-          name="name"
-          value={name}
-          onChange={nameHandler}
-          onBlur={blurHandler}
-          title="Имя"
-          placeholder="Введите Ваше имя"
-          type="text"
-        />
-        <Input
-          valueDirty={emailDirty}
-          errorMsg={emailError}
-          name="email"
-          value={email}
-          onChange={emailHandler}
-          onBlur={blurHandler}
-          title="Еmail"
-          placeholder="Введите ваш email"
-          type="email"
-        />
-        <Input
-          valueDirty={telephoneDirty}
-          errorMsg={telephoneError}
-          name="telephone"
-          value={telephone}
-          onChange={telephoneHandler}
-          onBlur={blurHandler}
-          title="Номер телефона"
-          placeholder="Введите номер телефона"
-          type="tel"
-        />
-        <Dropdown onLanguage={onLanguageHandler} />
-        <label className="form__checkbox">
-          <Checkbox isCheckbox={() => setIsContract(!isContract)} />
-          <span className="form__contract">
-            Принимаю&nbsp;
-            <a href="#" target="_blank" className="form__checkbox-link">
-              условия
-            </a>
-            &nbsp;использования
-          </span>
-        </label>
-        <Button isDisabled={formValid} name="Зарегистрироваться" />
-      </form>
-    </>
+    <form onSubmit={onSubmitHandler} className="form">
+      <h2 className="form__title">Регистрация</h2>
+      <p className="form__text">
+        Уже есть аккаунт?&nbsp;&nbsp;
+        <Link to="/form-validate/" className="form__title-link">
+          Войти
+        </Link>
+      </p>
+      <Input
+        valueDirty={nameDirty}
+        errorMsg={nameError}
+        name="name"
+        value={name}
+        onChange={nameHandler}
+        onBlur={blurHandler}
+        title="Имя"
+        placeholder="Введите Ваше имя"
+        type="text"
+      />
+      <Input
+        valueDirty={emailDirty}
+        errorMsg={emailError}
+        name="email"
+        value={email}
+        onChange={emailHandler}
+        onBlur={blurHandler}
+        title="Еmail"
+        placeholder="Введите ваш email"
+        type="email"
+      />
+      <Input
+        valueDirty={telephoneDirty}
+        errorMsg={telephoneError}
+        name="telephone"
+        value={telephone}
+        onChange={telephoneHandler}
+        onBlur={blurHandler}
+        title="Номер телефона"
+        placeholder="Введите номер телефона"
+        type="tel"
+      />
+      <Dropdown onLanguage={onLanguageHandler} />
+      <label className="form__checkbox">
+        <Checkbox isCheckbox={() => setIsContract(!isContract)} />
+        <span className="form__contract">
+          Принимаю&nbsp;
+          <a href="#" target="_blank" className="form__checkbox-link">
+            условия
+          </a>
+          &nbsp;использования
+        </span>
+      </label>
+      <Button isDisabled={formValid} name="Зарегистрироваться" />
+    </form>
   );
 };
 

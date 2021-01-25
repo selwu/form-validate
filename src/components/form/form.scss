@@ -1,6 +1,6 @@
 .form {
   background: #ffffff;
-  box-shadow: 0 12px 24px rgba(44, 39, 56, 0.02), 0px 32px 64px rgba(44, 39, 56, 0.04);
+  box-shadow: 0 12px 24px rgba(44, 39, 56, 0.02), 0 32px 64px rgba(44, 39, 56, 0.04);
   border-radius: 24px;
   min-width: 360px;
   max-width: 680px;
@@ -33,7 +33,10 @@
   &__checkbox {
     display: flex;
     margin: 27px 0 38px;
+    padding: 0;
+    justify-content: flex-start;
     align-items: center;
+    width: fit-content;
   }
   &__contract {
     margin-left: 8px;

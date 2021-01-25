@@ -13,10 +13,9 @@ const Form = () => {
   const [language, setLanguage] = useState('');
   const [isContract, setIsContract] = useState(false);
 
-  const [nameDirty, setnameDirty] = useState(false);
+  const [nameDirty, setNameDirty] = useState(false);
   const [emailDirty, setEmailDirty] = useState(false);
   const [telephoneDirty, setTelephoneDirty] = useState(false);
-  const [languageDirty, setLanguageDirty] = useState(false);
 
   const [nameError, setNameError] = useState('Поле не может быть пустым');
   const [emailError, setEmailError] = useState('Поле не может быть пустым');
@@ -42,7 +41,7 @@ const Form = () => {
   const blurHandler = (e) => {
     switch (e.target.name) {
       case 'name': {
-        setnameDirty(true);
+        setNameDirty(true);
         break;
       }
       case 'email': {
@@ -72,7 +71,9 @@ const Form = () => {
   };
   const telephoneHandler = (e) => {
     const value = e.target.value;
-    const re = /^\+?\d+\(?\d+\)?(\d)+(\s)?(\-)?\d+(\s)?/;
+    const re = /^\+?\d+\(?\d+\)?(\d)+(\-)?\d+(\-)?(\d+)/;
+    const resultLength = value.replace(/(\+)?(\()?(\)?)/g, '');
+    console.log('result: ', resultLength);
     setTelephone(value);
     if (!re.test(String(value).toLowerCase())) {
       setTelephoneError('Недопустимый формат номера');
@@ -96,7 +97,9 @@ const Form = () => {
         <h2 className="form__title">Регистрация</h2>
         <p className="form__text">
           Уже есть аккаунт?&nbsp;&nbsp;
-          <Link className="form__title-link">Войти</Link>
+          <Link to="/form-validate/" className="form__title-link">
+            Войти
+          </Link>
         </p>
         <Input
           valueDirty={nameDirty}
@@ -107,6 +110,7 @@ const Form = () => {
           onBlur={blurHandler}
           title="Имя"
           placeholder="Введите Ваше имя"
+          type="text"
         />
         <Input
           valueDirty={emailDirty}
@@ -117,6 +121,7 @@ const Form = () => {
           onBlur={blurHandler}
           title="Еmail"
           placeholder="Введите ваш email"
+          type="email"
         />
         <Input
           valueDirty={telephoneDirty}
@@ -127,6 +132,7 @@ const Form = () => {
           onBlur={blurHandler}
           title="Номер телефона"
           placeholder="Введите номер телефона"
+          type="tel"
         />
         <Dropdown onLanguage={onLanguageHandler} />
         <label className="form__checkbox">
